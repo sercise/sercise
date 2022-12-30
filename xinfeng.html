@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				
+				margin:0;
+				padding:0;
+				
+			}
+			
+			body{
+				
+				background: pink;
+				
+			}
+			
+			.envelope{
+				
+				position: absolute;
+				top: 20%;
+				left:30%;
+				box-shadow: 2px 20px 20px rgba(0,0,0,.1);
+				display:flex;
+				justify-content: center;
+				align-items: center;
+				width:500px;
+				height: 350px;
+				background: #fad4bf;
+				transform: rotate(9deg);
+				
+			}
+			
+			.content{
+				
+				transition: 2s;
+				position: absolute;
+				line-height: 1.6em;
+				padding: 2em;
+				box-sizing: border-box;
+				background:white;
+				width: 95%;
+				height: 90%;
+				opacity: 0;
+				
+			}
+			
+			.top{
+				
+				margin-left: 2px;
+				width:1px;
+				height: 1px;
+				border-top: 175px solid red;
+				border-left:250px solid transparent;
+				border-right:250px solid transparent;
+				border-bottom: 175px solid transparent;
+				
+			}
+			
+			.top::before{
+				
+				position: absolute;
+				content:'';
+				top: -4px;
+				left: 1px;
+				width:1px;
+				height: 1px;
+				border-top: 175px solid #fad4bf;
+				border-left:250px solid transparent;
+				border-right:250px solid transparent;
+				border-bottom: 175px solid transparent;
+				
+			}
+			
+			span{
+				
+				position: absolute;
+				font-size: 50px;
+				color: red;
+				text-shadow: 2px 2px 20px rgba(255,0,0,.5);
+				animation: scale 0.5s infinite alternate;
+			}
+			@keyframes scale{
+				100%{
+					transform: scale(1.2);
+				}
+			}
+			
+			h1{
+				
+				position: absolute;
+				color:red;
+				align:center;
+				top: 60px;
+				text-shadow:3px 2px 20px rgba(255,0,0,.5);
+				animation: scale 0.4s infinite alternate;
+				
+			}
+			
+			@keyframes scale{
+				100%{
+					transform: scale(1.2);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="envelope">
+			<div class="top"></div>
+			<h1>爱你呦</h1>
+			<span>❤</span>
+			<div class="content">
+				<p></p>
+			</div>
+		</div>
+		<script>
+			
+			let envelop = document.querySelector('.envelope')
+			let p = document.querySelector('p')
+			
+			let str ='昨天太近，今日太远，我依旧没有勇气向着你告白，但你是多么的耀眼，那我就以这种方式告诉你吧，其实我喜欢你好久了'
+			
+			envelop.onclick = function(){
+				
+				document.querySelector('.content').style.opacity = 0.9
+				
+				let i = 0 
+				let timer = setInterval(function(){
+					if(i > str.length - 1){
+						clearInterval(timer)
+						return	
+					}
+					p.innerHTML += str[i]
+					i++
+				},200)
+				
+				
+			}
+		</script>
+		<span>❤</span>
+		
+	
+	</body>
+</html>
